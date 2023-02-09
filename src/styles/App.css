@@ -11,6 +11,7 @@
 
 .App {
   width: 800px;
+  padding-left: 20px;
 }
 
 .post {
@@ -52,4 +53,17 @@
   border: 2px solid blue;
   background: blue;
   font-weight: bold;
+}
+
+.navBar {
+  height: 50px;
+  width: 100vw;
+  text-align: center;
+  background-color: grey;
+}
+
+.nav_Link a {
+  margin: 20px;
+  font-size: larger;
+  color: white
 }
