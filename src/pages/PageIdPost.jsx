@@ -8,12 +8,12 @@ export function PageIdPost() {
   const params = useParams();
   const [post, setPost] = useState({});
   const [comments, setComments] = useState([]);
-  const [fetchPostById, isLoading, error] = UseFetching(async (id) => {
+  const [fetchPostById, isLoading] = UseFetching(async (id) => {
     const responce = await postsService.getById(id);
     setPost(responce.data);
   });
 
-  const [fetchCommtById, isLoadingComm, errorComm] = UseFetching(async (id) => {
+  const [fetchCommtById, isLoadingComm] = UseFetching(async (id) => {
     const responce = await postsService.getCommById(id);
     setComments(responce.data);
   });

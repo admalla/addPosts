@@ -12,6 +12,7 @@ import UseFetching from '../hooks/useFetching';
 import { Pagination } from '../components/UI/pagination/Pagination';
 import { getPagesCount } from '../utilis/pages';
 import { UsePagination } from '../hooks/usePagination';
+import MySelect from '../components/UI/Select/MySelect';
 
 export function Posts() {
   const [posts, setPosts] = useState([]);
@@ -41,7 +42,7 @@ export function Posts() {
 
   useEffect(() => {
     fetchPosts();
-  }, [page]);
+  }, [page, limit]);
 
   const changePage = (page) => {
     setPage(page);
@@ -57,6 +58,17 @@ export function Posts() {
       </MyModal>
       <hr style={{ margin: '15px 0' }} />
       <PostFilter filter={filter} setFilter={setFilter} />
+      <MySelect
+        value={limit}
+        onChange={(value) => setLimit(value)}
+        defaultValue="Количество постов нв стр"
+        options={[
+          { value: 5, name: '5' },
+          { value: 10, name: '10' },
+          { value: 20, name: '20' },
+          { value: -1, name: 'все посты' },
+        ]}
+      />
       {errorPosts && <h1>Произошла ошибка {errorPosts}</h1>}
       {isLoadingPosts ? (
         <div style={{ display: 'flex', justifyContent: 'center', marginTop: 50 }}>
